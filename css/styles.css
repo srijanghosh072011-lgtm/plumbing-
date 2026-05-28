@@ -220,7 +220,7 @@ img { max-width: 100%; display: block; }
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(3,7,18,0.88) 0%, rgba(17,24,39,0.75) 60%, rgba(31,41,55,0.6) 100%);
+  background: linear-gradient(to right, rgba(3,7,18,0.92) 40%, rgba(3,7,18,0.65) 100%);
 }
 .hero::before {
   content: ''; position: absolute; inset: 0; z-index: 1;
