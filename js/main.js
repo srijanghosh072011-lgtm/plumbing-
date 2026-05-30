@@ -62,25 +62,28 @@
     stats.forEach(function (el) { sIO.observe(el); });
   }
 
-  // ===== Form submission (demo handler) =====
+  // ===== Contact form =====
+  // NOTE: This is a front-end stub. No data leaves the browser yet. Before
+  // launch, point the form at a real handler (Formspree / Netlify Forms / an
+  // API endpoint) and replace the simulated success below with the response.
   const form = document.querySelector('.contact-form');
   if (form) {
+    const button = form.querySelector('.form-submit');
+    const status = form.querySelector('.form-status');
+    const label = button ? button.textContent.trim() : '';
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const btn = form.querySelector('.form-submit');
-      const orig = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      setTimeout(function () {
-        btn.textContent = 'Request received — we\'ll call you within 60 minutes';
-        btn.style.background = 'linear-gradient(135deg, #22C55E, #16A34A)';
+      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      if (status) { status.textContent = ''; }
+
+      window.setTimeout(function () {
         form.reset();
-        setTimeout(function () {
-          btn.disabled = false;
-          btn.textContent = orig;
-          btn.style.background = '';
-        }, 4500);
-      }, 900);
+        if (button) { button.disabled = false; button.textContent = label; }
+        if (status) {
+          status.textContent = 'Thanks — your request has been received. We’ll call you back within 60 minutes.';
+        }
+      }, 800);
     });
   }
 })();

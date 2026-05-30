@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Build / dependency output (none today, but keep the repo clean if added later)
+node_modules/
+dist/
+.cache/
+
+# Archives that occasionally get dropped into the working tree
+*.zip
