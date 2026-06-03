@@ -6,23 +6,30 @@ framework. It can be opened straight from disk or served by any static host.
 
 ## Live site
 
-Deployed via GitHub Pages from `main`:
+Currently previewed on GitHub Pages from `main`:
 <https://srijanghosh072011-lgtm.github.io/plumbing-/>
+
+**Before launch, move to Cloudflare Pages or Netlify** so the `_headers` file
+in the repo (HSTS, CSP, X-Content-Type-Options, etc.) is actually applied —
+GitHub Pages ignores it. The full pre-launch checklist lives in `SECURITY.md`.
 
 ## Structure
 
 ```
 .
-├── index.html                 # Redirects to the home page
-├── 247plumbing-home.html      # Home
-├── 247plumbing-services.html  # Services
-├── 247plumbing-about.html     # About
-├── 247plumbing-contact.html   # Contact (form + map)
-├── css/styles.css             # Single stylesheet; design tokens at the top
-├── js/main.js                 # Nav toggle, scroll reveals, stat counter, form
-├── images/                    # Photography (WebP) + favicon.svg
+├── index.html                  # Redirects to the home page
+├── 247plumbing-home.html       # Home
+├── 247plumbing-services.html   # Services
+├── 247plumbing-about.html      # About
+├── 247plumbing-contact.html    # Contact (form + map)
+├── 247plumbing-privacy.html    # Privacy policy (PIPEDA-aware)
+├── css/styles.css              # Single stylesheet; design tokens at the top
+├── js/main.js                  # Nav toggle, scroll reveals, stat counter, form
+├── images/                     # Photography (WebP) + favicon.svg
+├── _headers                    # Security & cache headers (Netlify / CF Pages)
 ├── sitemap.xml
-└── robots.txt
+├── robots.txt
+└── SECURITY.md                 # Pre-launch checklist — walk every box
 ```
 
 ## Design system
@@ -61,3 +68,5 @@ These are intentionally placeholders until the owner provides the real values:
 - [ ] "Read all Google Reviews" link — currently `#`
 - [ ] Contact form endpoint — `js/main.js` is a front-end stub; wire it to
       Formspree / Netlify Forms / an API before accepting real submissions
+- [ ] When the form endpoint is added, append its origin to `_headers`
+      `Content-Security-Policy: form-action 'self' https://your-provider`

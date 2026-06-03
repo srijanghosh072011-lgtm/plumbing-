@@ -74,6 +74,11 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      // Honeypot: real users can't see this field, bots fill it.
+      const hp = form.querySelector('input[name="website"]');
+      if (hp && hp.value) { form.reset(); return; }
+
       if (button) { button.disabled = true; button.textContent = 'Sending…'; }
       if (status) { status.textContent = ''; }
 

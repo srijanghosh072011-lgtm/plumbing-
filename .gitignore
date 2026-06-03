@@ -11,5 +11,11 @@ node_modules/
 dist/
 .cache/
 
+# Local environment / secrets — never commit these
+.env
+.env.*
+*.pem
+*.key
+
 # Archives that occasionally get dropped into the working tree
 *.zip
