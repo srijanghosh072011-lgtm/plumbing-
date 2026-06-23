@@ -87,3 +87,65 @@
     });
   }
 })();
+
+/* ===== Footer year ===== */
+(function () {
+  var y = document.getElementById('year');
+  if (y) { y.textContent = new Date().getFullYear(); }
+})();
+
+/* ===== Cookie consent (privacy-first: nothing non-essential loads until granted) ===== */
+(function () {
+  var KEY = 'cookie-consent-v1';
+  function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+
+  function loadAnalytics() {
+    // Consent granted — load analytics / marketing scripts HERE and nowhere else.
+    // e.g. var s = document.createElement('script'); s.async = true;
+    //      s.src = 'https://your-analytics.example/script.js';
+    //      document.head.appendChild(s);
+  }
+
+  function build() {
+    var el = document.createElement('div');
+    el.className = 'cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Cookie consent');
+    el.innerHTML =
+      '<p><strong>We value your privacy.</strong> We use essential cookies to run this site, ' +
+      'and — only with your consent — analytics to improve it. Read our ' +
+      '<a href="privacy.html">Privacy Policy</a>.</p>' +
+      '<div class="cookie-actions">' +
+      '<button class="btn btn-ghost" type="button" data-consent="declined">Decline</button>' +
+      '<button class="btn btn-primary" type="button" data-consent="granted">Accept</button>' +
+      '</div>';
+    document.body.appendChild(el);
+    el.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-consent]');
+      if (!b) { return; }
+      var v = b.getAttribute('data-consent');
+      store(v);
+      if (v === 'granted') { loadAnalytics(); }
+      el.classList.remove('is-open');
+    });
+    return el;
+  }
+  function banner() { return document.querySelector('.cookie-banner') || build(); }
+
+  // Re-open the banner from any "Cookie Settings" link.
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-cookie-settings]');
+    if (!t) { return; }
+    e.preventDefault();
+    banner().classList.add('is-open');
+  });
+
+  var choice = read();
+  if (choice === 'granted') {
+    loadAnalytics();
+  } else if (choice !== 'declined') {
+    var b = build();
+    window.setTimeout(function () { b.classList.add('is-open'); }, 600);
+  }
+})();
