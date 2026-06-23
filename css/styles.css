@@ -905,3 +905,26 @@ main { display: block; }
 @media (max-width: 760px) {
   .cookie-banner { grid-template-columns: 1fr; bottom: 84px; left: 12px; right: 12px; }
 }
+
+/* ===== CHIPS (neighbourhoods, tags) ===== */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.chip {
+  font-size: 13px; font-weight: 600; color: var(--navy-900);
+  background: var(--blue-50); border: 1px solid var(--blue-100);
+  border-radius: 999px; padding: 6px 12px;
+}
+a.chip:hover { background: var(--blue-100); color: var(--navy-900); }
+
+/* ===== AREA / CARD LINK GRID ===== */
+.area-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .area-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .area-grid { grid-template-columns: 1fr; } }
+.area-card {
+  display: block; background: #fff; border: 1px solid var(--ink-150);
+  border-radius: 18px; padding: 24px;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.area-card:hover { border-color: var(--royal); box-shadow: 0 18px 40px rgba(11,42,74,0.10); transform: translateY(-3px); }
+.area-card h3 { font-size: 19px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.area-card h3 svg { width: 18px; height: 18px; color: var(--royal); }
+.area-card p { color: var(--ink-500); font-size: 14px; margin: 0; }
