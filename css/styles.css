@@ -928,3 +928,27 @@ a.chip:hover { background: var(--blue-100); color: var(--navy-900); }
 .area-card h3 { font-size: 19px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .area-card h3 svg { width: 18px; height: 18px; color: var(--royal); }
 .area-card p { color: var(--ink-500); font-size: 14px; margin: 0; }
+
+/* ===== PRICING ===== */
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+@media (max-width: 900px) { .price-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+.price-card {
+  background: #fff; border: 1px solid var(--ink-150); border-radius: 20px;
+  padding: 32px 28px; display: flex; flex-direction: column; position: relative;
+}
+.price-card.featured { border-color: var(--royal); box-shadow: 0 24px 48px rgba(11,42,74,0.10); }
+.price-card .tag {
+  position: absolute; top: -13px; left: 28px;
+  background: var(--royal); color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em; padding: 6px 13px; border-radius: 999px;
+}
+.price-card h3 { font-size: 20px; margin-bottom: 6px; }
+.price-card .sub { color: var(--ink-500); font-size: 14px; margin: 0 0 14px; }
+.price-card .price { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 42px; color: var(--navy-900); line-height: 1; }
+.price-card .price small { font-size: 15px; font-weight: 600; color: var(--ink-500); }
+.price-card .per { color: var(--ink-500); font-size: 13px; margin: 4px 0 20px; }
+.price-list { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 11px; }
+.price-list li { display: flex; gap: 10px; color: var(--ink-600); font-size: 14.5px; line-height: 1.5; }
+.price-list li svg { width: 18px; height: 18px; color: var(--success); flex-shrink: 0; margin-top: 2px; }
+.price-card .btn { margin-top: auto; }
+.price-note { text-align: center; color: var(--ink-500); font-size: 14px; margin-top: 30px; }
